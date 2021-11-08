@@ -1,0 +1,209 @@
+/* The main thing that I focused on when I was revising my CSS was to make it more organized. I wanted
+to make it easy for someone else to follow along in my CSS. I added comments throughout the code to
+specify what was being effected with each section of code. I reordered some of the code and made sure
+that everything was grouped with other parts of the code that worked together for varying sections of
+the web page. After commenting to specify what section in the CSS did variosu things to the HTML, I also
+spaced the  sections out to make it easier to tell what was supposed to be grouped together. Another changed
+that I made was eliminating a lot of duplicate code. I added a couple new selectors that helped reuse the
+same code in multiple places instead of having the CSS written more than once. I also added a variable
+for the background color which is commonly used throughout the webpage to make it easier to change that
+color as desired and keep them all the same. I added a cursor: pointer effect to the <a> tags in my menu
+to give the user a better idea that it is a button when the hover over it as well. With the changes that 
+I have made, it has made it easier for me to create a new theme which overrides parts of this CSS to 
+change the overall look and feel of my webpage.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&family=Roboto+Mono:wght@100&display=swap');
+
+:root{
+    /*selectedScreen is used for the menu (active/hover) as well as the background of the body of each screen*/
+    --selectedScreen: lightblue;
+    --backgroundColor: white;
+    --menuColor: #3bbced;
+}
+
+/*Set body background image*/
+body{
+    background-image: url("../img/tan_background.jpeg");
+}
+
+
+/*Create the main layout of the page*/
+.content{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    background-color: var(--backgroundColor);
+    border-radius: 35px;
+    grid-template-areas: 
+    "header header header header header header header header header header header header"
+    "nav nav nav nav nav nav nav nav nav nav nav nav"
+    "main main main main main main main main main main main main"
+    "footer footer footer footer footer footer footer footer footer footer footer footer";
+}
+
+
+/*Name areas to set up grid-template-areas*/
+header{
+    grid-area: header;
+}
+nav {
+    grid-area: nav;
+}
+main{
+    grid-area: main;
+}
+footer{
+    grid-area: footer;
+}
+
+
+/*Create the site navigation menu*/
+nav ul.menu li a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Oxygen', sans-serif;
+    cursor: pointer;
+}
+nav ul.menu li:hover{
+    background-color: var(--selectedScreen);
+}
+nav ul.menu li.active{
+    background-color: var(--selectedScreen);
+}
+nav ul.menu li{
+    display: block;
+    background-color: var(--menuColor);
+    padding: 5px 10px;
+    width: 125px;
+    font-size: 30px;
+    text-align: center;
+}
+nav ul.menu div.first li{
+    border-radius: 0 0 0 15px;
+}
+nav ul.menu{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+nav ul.menu div.last li{
+    border-radius: 0 0 15px 0;
+}
+/*For desktop/larger screens, menu will be at the top right*/
+@media screen and (min-width: 889px) {
+    nav ul.menu{
+        justify-content: end;
+    }
+    nav ul.menu div.last li{
+        border-radius: 0 35px 0 0;
+    }
+
+    /*For desktop/larger screens puts the nav menu on the top row with the header*/
+    .content{
+        grid-template-areas: 
+        "header header header header header nav nav nav nav nav nav nav"
+        "main main main main main main main main main main main main"
+        "footer footer footer footer footer footer footer footer footer footer footer footer";
+    }
+}
+
+
+/*Style the header (title/logo)*/
+header div{
+    display: flex;
+}
+header div img{
+    height: 100px;
+    padding: 15px;
+}
+h1, h2{
+    margin-top: 35px;
+    text-align: center;
+}
+h1{
+    font-size: 50px;
+}
+h2{
+    font-size: 40px;
+}
+
+
+/* Style the main section of the home page */
+figure{
+    margin: 0 auto;
+}
+.homeMain{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.homeMain section{
+    display: inline-block;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    width: 275px;
+    background-color: var(--selectedScreen);
+    border-radius: 25px;
+}
+.homeMain > *{
+    margin: 1em 0;
+}
+.homeMain section img{
+    border-radius: 15px;
+    margin: 1em auto;
+    width: 175px;
+}
+.homeMain section h3{
+    text-align: center;
+}
+footer p{
+    float: right;
+    margin-right: 15px;
+}
+footer input{
+    float: left;
+    margin-left: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+
+/*Style the Contact/Info main sections*/
+.contactMain section, .infoMain section{
+    margin-top: 20px;
+    display: flex;
+    min-height: 600px;
+    justify-content: center;
+    align-items: center;
+}
+.contactMain section div.back, .infoMain section div.back{
+    width: 90%;
+    height: 90%;
+    background-color: var(--selectedScreen);
+    border-radius: 15px 15px 15px 15px;
+}
+.contactMain section div p, .infoMain section div p{
+    font-size: 20px;
+    width: 85%;
+    margin: 20px auto;
+}
+.infoMain section div div{
+    height: 220px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+/*Used to set the display to none in the pages that should not be shown at the time*/
+.dnone{
+    display: none;
+}
+
+
+
