@@ -34,3 +34,16 @@ function loadInfo(){
     document.getElementById("info").classList.remove("dnone");
     document.getElementById("showInfo").classList.add("active");
 }
+function toggleTheme() {
+    var link = $("<link />",{
+        rel: "stylesheet",
+        type: "text/css",
+        href: "css/darkTheme.css"
+      })
+    if($('link').eq(1).length){
+        $('link').eq(1).remove();
+    }
+    else{
+        $('head').append(link);
+    }
+ }
