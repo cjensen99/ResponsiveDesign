@@ -11,6 +11,9 @@ a button, "Toggle Theme" at the bottom left of my webpage in the footer in order
 theme. If clicked, it will toggle between the original theme and the new theme back and forth.
 */
 
+/*For project 5 I did not have to make any changes to this css file. My theme applied automatically due to the
+variables/media queries that I used.*/
+
 
 /*Change the colors of the website*/
 :root{

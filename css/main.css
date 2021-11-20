@@ -13,6 +13,11 @@ I have made, it has made it easier for me to create a new theme which overrides 
 change the overall look and feel of my webpage.
 */
 
+/*For project 5 I added lines 209 and on to this css file. I did not make any changes above line 209. Everything
+that I added was to style the form/account page that I created for this project. Except for 277-280 which has been
+used to set elements with display none.
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&family=Roboto+Mono:wght@100&display=swap');
 
 :root{
@@ -198,6 +203,79 @@ footer input{
     text-align: center;
     padding-bottom: 20px;
 }
+#form, #thankyou{
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 20px;
+    background-color: var(--selectedScreen);
+}
+
+
+/*Style the form*/
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+.right{
+    align-items: flex-start;
+}
+.container > li{
+    margin: 10px 0;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+.formContainer{
+    display: flex;
+    justify-content: space-around;
+}
+@media screen and (max-width: 650px){
+    .formContainer{
+        flex-direction: column;
+    }
+    .right, .left{
+        margin: 0 auto;
+    }
+}
+ul.container{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.btn{
+    width: 200px;
+    height: 50px;
+    margin: 20px auto;
+    display: flex;
+}
+.btn button{
+    width: 100px;
+    height: 40px;
+    margin: auto;
+    border-radius: 15px;
+}
+.container h3{
+    margin-top: 20px;
+}
+div.right div{
+    margin: 10px;
+}
+div.right label{
+    font-size: 20px;
+}
+label{
+    font-size: 20px;
+}
+div.right textarea{
+    width: 240px;
+    height: 75px;
+}
+#thankyou div{
+    width: 90%;
+}
 
 
 /*Used to set the display to none in the pages that should not be shown at the time*/
@@ -205,5 +283,16 @@ footer input{
     display: none;
 }
 
+input.was-validated:invalid {
+    color: red;
+    border: 1px solid red;
+}
 
+input.was-validated:invalid ~ div.errorMsg {
+    display: block;
+}
+  
+input:valid ~ div.errorMsg, input:invalid ~ div.errorMsg {
+    display: none;
+}
 

@@ -23,8 +23,7 @@
         <title>Home Page</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/main.css">
-        <!-- <link rel="stylesheet" href="css/darkTheme.css"> -->
-        <script src="js/script.js"></script>
+        <script src="js/main.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
@@ -39,13 +38,99 @@
 
             <nav>
                 <ul class="menu">
-                    <div class="first"><li id="showHome" class="active"><a onclick="loadHome()">Home</a></li></div>
-                    <li id="showContact"><a onclick="loadContact()">Contact</a></li>
-                    <div class="last"><li id="showInfo"><a onclick="loadInfo()">Info</a></li></div>
+                    <div class="first"><li id="showHome" class="active"><a id="btnHome" onclick="loadHome()">Home</a></li></div>
+                    <li id="showContact"><a id="btnContact" onclick="loadContact()">Contact</a></li>
+                    <div class="last"><li id="showInfo"><a id="btnInfo" onclick="loadInfo()">Info</a></li></div>
                 </ul>
             </nav>
 
-            <main id="home" class="homeMain">
+            <main id="thankyou" class="dnone">
+                    <h1>Thank you</h1>
+                    <h3 style="text-align: center;">Visit Home, Contact, or Info</h3>
+            </main>
+
+            <main id="form">
+                <h1 id="formHeader" style="font-size: 40px;">Create Account</h1>
+                <div>
+                    <form id="myform" novalidate>
+                        <div class="formContainer">
+                            <div class="left">
+                                <ul class="container">
+                                    <li>
+                                        <label for="first-name">First Name</label>
+                                        <input id="first-name" name="first-name" required>
+                                        <div class="errorMsg">First Name is Required</div>
+                                    </li>
+                                    <li>
+                                        <label for="last-name">Last Name</label>
+                                        <input id="last-name" name="last-name" required>
+                                        <div class="errorMsg">Last Name is Required</div>
+                                    </li>
+                                    <li>
+                                        <label for="address">Address</label>
+                                        <input id="address" name="address" required>
+                                        <div class="errorMsg"></div>
+                                    </li>
+                                    
+                                    <li>
+                                        <label for="city">City</label>
+                                        <input id="city" name="city" required>
+                                        <div class="errorMsg"></div>
+                                    </li>
+                                    
+                                    <li>
+                                        <label for="state">State</label>
+                                        <input id="state" name="state" minlength="2" maxlength="2" required>
+                                        <div class="errorMsg">You must enter a valid state abbreviation</div>
+                                    </li>
+                                    <li>
+                                        <label for="zip">Zip Code</label>
+                                        <input id="zip" name="zip" pattern="^\d{5}$" maxlength="5" required>
+                                        <div class="errorMsg">You must enter a valid Zip Code</div>
+                                    </li>
+                                    <li>
+                                        <label for="phone">Phone</label>
+                                        <input id="phone" name="phone" pattern="^\d{10}$" maxlength="10" required>
+                                        <div class="errorMsg">You must enter a valid phone number</div>
+                                    </li>
+                                    <li>
+                                        <label for="email">Email</label>
+                                        <input id="email" name="email" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$" required>
+                                        <div class="errorMsg">You must enter a valid email</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="right container">
+                                <h3>How did you find my page?</h3>
+                                <div>
+                                    <input type="checkbox" id="google" name="find-page" value="Google Search">
+                                    <label for="google">Google Search</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="friend" name="find-page" value="Friend">
+                                    <label for="friend">Friend</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="newspaper" name="find-page" value="News Paper">
+                                    <label for="newspaper">News Paper</label>
+                                </div>
+                                <div id="checkboxError" class="errorMsg dnone">You must check at least one</div>
+                                <label for="comments" >Comments</label>
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <button id="submitBtn" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    
+                </div>
+
+            </main>
+
+            
+
+            <main id="home" class="homeMain dnone">
                 <!--<section><img src="img/call.png"><h3>Calling</h3></section>-->
                 <section><figure><img src="img/call.png"><figcaption><h3>Calling</h3></figcaption></figure></section>
                 <section><img src="img/message.jpg"><h3>Messaging</h3></section>
@@ -103,8 +188,16 @@
 
             <footer>
                 <input id="btn9" type="button" value="Toggle Theme" onclick="toggleTheme()">
+                <input id="btn8" type="button" value="Create Account" onclick="createAccount()">
                 <p>Version: 0.1.1</p>
             </footer>
         </div>
+        <script src="js/validate.js"></script>
+
+        <script>
+            $(document).ready(function () {
+              initValidation("#myform");
+            });
+        </script>
     </body>
 </html>
