@@ -23,7 +23,7 @@
         <title>Home Page</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
@@ -40,14 +40,22 @@
                 <ul class="menu">
                     <div class="first"><li id="showHome" class="active"><a id="btnHome" onclick="loadHome()">Home</a></li></div>
                     <li id="showContact"><a id="btnContact" onclick="loadContact()">Contact</a></li>
+                    <li id="showVisitors"><a id="btnVisitors" onclick="loadVisitors()">Visitors</a></li>
                     <div class="last"><li id="showInfo"><a id="btnInfo" onclick="loadInfo()">Info</a></li></div>
                 </ul>
             </nav>
 
-            <main id="thankyou" class="dnone">
+            <main id="visitorList" class="dnone">
+                <div id="tableContainer">
+                    
+                </div>
+                
+            </main>
+
+            <!-- <main id="thankyou" class="dnone">
                     <h1>Thank you</h1>
                     <h3 style="text-align: center;">Visit Home, Contact, or Info</h3>
-            </main>
+            </main> -->
 
             <main id="form">
                 <h1 id="formHeader" style="font-size: 40px;">Create Account</h1>
@@ -116,19 +124,26 @@
                                 </div>
                                 <div id="checkboxError" class="errorMsg dnone">You must check at least one</div>
                                 <label for="comments" >Comments</label>
-                                <textarea></textarea>
+                                <textarea id="comments" name="comments"></textarea>
                             </div>
                         </div>
-                        <div class="btn">
-                            <button id="submitBtn" type="submit">Submit</button>
+                        <div class="btn " id="formButtons">
+                            <button id="submitBtn" type="submit" onclick="submitForm()">Submit</button>
+                            <button id="cancelBtn" type="submit" onclick="giveCancelOptions()">Cancel</button>
+                        </div>
+                        <div class="btn dnone" id="updateVisitorButtons">
+                            <button id="submitBtn" type="submit" onclick="updateVisitor()">Update</button>
+                        </div>
+                        <div class="cancelOptions dnone" id="cancelButtons">
+                            <p>Are you sure you would like to cancel?</p>
+                            <button type="submit" onclick="cancelForm()">Yes</button>
+                            <button type="submit" onclick="dontCancel()">No</button>
                         </div>
                     </form>
                     
                 </div>
 
-            </main>
-
-            
+            </main>            
 
             <main id="home" class="homeMain dnone">
                 <!--<section><img src="img/call.png"><h3>Calling</h3></section>-->
@@ -188,11 +203,17 @@
 
             <footer>
                 <input id="btn9" type="button" value="Toggle Theme" onclick="toggleTheme()">
-                <input id="btn8" type="button" value="Create Account" onclick="createAccount()">
+                <input id="btn8" type="button" value="Log Visit" onclick="createAccount()">
                 <p>Version: 0.1.1</p>
             </footer>
         </div>
+        
         <script src="js/validate.js"></script>
+        <script src="js/model.js"></script>
+        <script src="js/view.js"></script>
+        <script src="js/controller.js"></script>
+        
+        
 
         <script>
             $(document).ready(function () {

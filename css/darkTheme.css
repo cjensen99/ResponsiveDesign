@@ -43,6 +43,25 @@ body{
     }
 }
 
+@media screen and (max-width: 912px) {
+    nav ul.menu li{
+        width: 115px;
+    }
+}
+
+@media screen and (max-width: 622px) {
+    nav ul.menu li{
+        width: 100px;
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 557px) {
+    nav ul.menu li{
+        width: 80px;
+    }
+}
+
 /*Put the menu on the left side of the header (in the case of a large screen)*/
 @media screen and (min-width: 889px) {
     .content{

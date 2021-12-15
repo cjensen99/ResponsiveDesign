@@ -115,6 +115,12 @@ nav ul.menu div.last li{
         "footer footer footer footer footer footer footer footer footer footer footer footer";
     }
 }
+@media screen and (max-width: 600px){
+    nav ul.menu li{
+        width: 100px;
+        font-size: 25px;
+    }
+}
 
 
 /*Style the header (title/logo)*/
@@ -246,16 +252,28 @@ ul.container{
     list-style-type: none;
 }
 .btn{
-    width: 200px;
+    width: 250px;
     height: 50px;
     margin: 20px auto;
     display: flex;
 }
-.btn button{
+.btn button, .cancelOptions button{
     width: 100px;
     height: 40px;
-    margin: auto;
+    margin: auto 10px;
     border-radius: 15px;
+}
+.cancelOptions{
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.cancelOptions p{
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 15px;
 }
 .container h3{
     margin-top: 20px;
@@ -296,3 +314,23 @@ input:valid ~ div.errorMsg, input:invalid ~ div.errorMsg {
     display: none;
 }
 
+
+/*Style the visitor table*/
+table{
+    table-layout: fixed;
+    border: 5px black solid;
+    margin: 20px auto;
+    width: 90%;
+    overflow-wrap: break-word;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.firstRow th{
+    background-color: var(--menuColor);
+}
+tr:nth-child(odd){
+    background-color: var(--selectedScreen);
+}
+td{
+    text-align: center;
+}

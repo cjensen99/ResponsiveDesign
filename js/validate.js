@@ -1,6 +1,6 @@
-/* Form Validation Example */
 /* Personal Web Site-Visitor Form Validation */
-/* See comments with TODO for code you need to implement */
+var formIsValid = true;
+
 const stateAbbreviations = [
     'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
     'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
@@ -92,4 +92,59 @@ const stateAbbreviations = [
       el.setCustomValidity(message);   //sets error message and field gets 'invalid' stat
     }
   }
-    
+
+function checkFormValidity(){
+  if($("#first-name").val() == ""){
+    formIsValid = false;
+  }
+  else if($("#last-name").val() == ""){
+    formIsValid = false;
+  }
+  else if($("#address").val() == ""){
+    formIsValid = false;
+  }
+  else if($("#city").val() == ""){
+    formIsValid = false;
+  }
+  else if(stateAbbreviations.includes($("#state").val().toUpperCase()) == false){
+    formIsValid = false;
+  }
+  else if(/^\d{5}$/.test($("#zip").val()) == false){
+    formIsValid = false;
+  }
+  else if(/^\d{10}$/.test($("#phone").val()) == false){
+    formIsValid = false;
+  }
+  else if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/.test($("#email").val()) == false){
+    formIsValid = false;
+  }
+  else{
+    formIsValid = true;
+  }
+
+  //check "How did you find my page" section
+  if(formIsValid == true){
+    let isChecked = 0;
+    if($("#google").is(":checked")){
+      isChecked++;
+    }
+    if($("#friend").is(":checked")){
+      isChecked++;
+    }
+    if($("#newspaper").is(":checked")){
+      isChecked++;
+    }
+  
+    if(isChecked == 0){
+      formIsValid = false;
+    }
+    else {
+      formIsValid = true;
+    }
+  }
+}
+
+function returnFormValidity(){
+  checkFormValidity();
+  return formIsValid;
+}
