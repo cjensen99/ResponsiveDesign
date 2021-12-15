@@ -1,0 +1,82 @@
+/*The first thing that I changed are the colors in the website to give it a dark theme. I removed
+the background image and set a dark color instead as well. Next, to change the overall layout of
+the website, I changed how the menu/headers at big and large screen sizes. The menu with the theme
+at a desktop size screen, the menu and the header now switch places. The menu goes to the left and
+the header goes to the right (backwards from before). On small screens, the menu now appears above
+the header where as before the menu was below the header on small screens. I had to make small
+adjustments to the border-radius values in parts of the menu to make it appear as it should after
+switching its position. Changing the colors of the website was very easy because in the main.css
+file I switched all of the colors to call a variable instead of hardcoding them. Lastly, I created
+a button, "Toggle Theme" at the bottom left of my webpage in the footer in order to toggle the new
+theme. If clicked, it will toggle between the original theme and the new theme back and forth.
+*/
+
+/*For project 5 I did not have to make any changes to this css file. My theme applied automatically due to the
+variables/media queries that I used.*/
+
+
+/*Change the colors of the website*/
+:root{
+    /*selectedScreen is used for the menu (active/hover) as well as the background of the body of each screen*/
+    --selectedScreen: lightgray;
+    --backgroundColor: gray;
+    --menuColor: darkgray;
+}
+/*Remove background image and set a color instead*/
+body{
+    background-image: none;
+    background-color: #2B2D2F;
+}
+
+/*Put the menu above the header (in the case of a small screen)*/
+.content{
+    grid-template-areas: 
+    "nav nav nav nav nav nav nav nav nav nav nav nav"
+    "header header header header header header header header header header header header"
+    "main main main main main main main main main main main main"
+    "footer footer footer footer footer footer footer footer footer footer footer footer";
+}
+/*Reduce the size of the menu to match the background on smaller screens*/
+@media screen and (max-width: 525px) {
+    nav ul.menu li{
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 912px) {
+    nav ul.menu li{
+        width: 115px;
+    }
+}
+
+@media screen and (max-width: 622px) {
+    nav ul.menu li{
+        width: 100px;
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 557px) {
+    nav ul.menu li{
+        width: 80px;
+    }
+}
+
+/*Put the menu on the left side of the header (in the case of a large screen)*/
+@media screen and (min-width: 889px) {
+    .content{
+        grid-template-areas: 
+        "nav nav nav nav nav nav nav header header header header header"
+        "main main main main main main main main main main main main"
+        "footer footer footer footer footer footer footer footer footer footer footer footer";
+    }
+    nav ul.menu{
+        justify-content: start;
+    }
+    nav ul.menu div.last li{
+        border-radius: 0 0 35px 0;
+    }
+    nav ul.menu div.first li{
+        border-radius: 35px 0 0 0;
+    }
+}
